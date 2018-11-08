@@ -26,7 +26,7 @@ keep_prob=tf.placeholder(tf.float32) #dropout
 
 #定义卷积操作
 def conv2d(name, x, W, b, strides=1):
-    x = tf.nn.conv2d(x, W, strides=[1,strides,1], padding='SAME')
+    x = tf.nn.conv2d(x, W, strides=[1,strides,strides,1], padding='SAME')
     x = tf.nn.bias_add(x, b)
     return tf.nn.relu(x, name=name)
 
@@ -82,7 +82,7 @@ def alex_net(x, weights, biases, dropout):
 
     #第三层卷积
      #卷积
-    conv3=conv2d('conv3', norm1, weights['wc3'], biases['bc3'])
+    conv3=conv2d('conv3', norm2, weights['wc3'], biases['bc3'])
     #最大池化
     pool3 = maxpool2d('pool3',conv3,k=2)
     #规范化
