@@ -115,7 +115,7 @@ def alex_net(x, weights, biases, dropout):
     fc2 = tf.nn.dropout(fc2, dropout)
 
     #输出层
-    out= tf.add(tf.matul(fc2, weights['out']),biases['out'])
+    out= tf.add(tf.matmul(fc2, weights['out']),biases['out'])
     return out
 #构建模型
 pred = alex_net(x, weights, biases, keep_prob)
