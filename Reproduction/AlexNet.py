@@ -108,7 +108,7 @@ def alex_net(x, weights, biases, dropout):
     fc1 = tf.nn.dropout(fc1, dropout)
 
     #全连接层2
-    fc2 = tf.reshape(fc1, [-1, weights['wd2'].get_reshape().as_list()[0]])
+    fc2 = tf.reshape(fc1, [-1, weights['wd2'].get_shape().as_list()[0]])
     fc2 = tf.add(tf.matmul(fc2, weights['wd2']),biases['bd2'])
     fc2 = tf.nn.relu(fc2)
     #dropout
